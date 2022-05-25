@@ -1,0 +1,17 @@
+<h1 class="titulo-series">Listado de Series de TV</h1>
+
+<h3>Ingrese una serie o película nueva</h3>
+
+<%= form_with model: TvShow.new do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %><br>
+    <%= form.label :summary %>
+    <%= form.text_area :summary %><br>
+    <%= form.label :release_date %>
+    <%= form.date_field :release_date %><br>
+    <%= form.label :rating %>
+    <%= form.number_field :rating, step: '0.1' %><br>
+    <%= form.submit  "Enviar" %>
+<% end %>
+
+<%= link_to 'go back to welcome page', welcome_path %>
