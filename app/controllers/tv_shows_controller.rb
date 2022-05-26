@@ -1,7 +1,6 @@
 class TvShowsController < ApplicationController
   before_action :set_tv_show, only: %i[ show edit update destroy ]
 
-  # GET /tv_shows or /tv_shows.json
   def index
     @tv_shows = TvShow.all
   end
@@ -23,16 +22,12 @@ class TvShowsController < ApplicationController
   def create
     @tv_show = TvShow.new(tv_show_params)
 
-    respond_to do |format|
-      if @tv_show.save
-        format.html { redirect_to tv_show_url(@tv_show), notice: "Tv show was successfully created." }
-        format.json { render :show, status: :created, location: @tv_show }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tv_show.errors, status: :unprocessable_entity }
-      end
+    if @tv_show.save
+        redirect_to tv_show_url(@tv_show), notice: "Tv show was successfully created."
+    else
+        render :new, status: :unprocessable_entity
     end
-  end
+end
 
   # PATCH/PUT /tv_shows/1 or /tv_shows/1.json
   def update
