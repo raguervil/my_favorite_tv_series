@@ -2,7 +2,7 @@ class TvShowsController < ApplicationController
   before_action :set_tv_show, only: %i[ show edit update destroy ]
 
   def index
-    @tv_shows = TvShow.all
+    @tv_shows = TvShow.page(params[:page])
   end
 
   # GET /tv_shows/1 or /tv_shows/1.json
