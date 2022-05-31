@@ -1,5 +1,14 @@
 class TvShowsController < ApplicationController
   before_action :set_tv_show, only: %i[ show edit update destroy ]
+  
+  def search
+    @search = TvShow.find_by("name LIKE ?", "%#{ params[:query] }%")  
+  end
+
+  def about
+    @about = 'Copyright 2022'
+    @tv_show = TvShow.find(params[:id])
+  end 
 
   def index
     @tv_shows = TvShow.page(params[:page])

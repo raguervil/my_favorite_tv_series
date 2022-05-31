@@ -20,7 +20,8 @@
         <td><%= tv_show.summary %></td>
         <td><%= tv_show.release_date %></td>
         <td><%= tv_show.rating %></td>
-        <td><%= link_to 'Show', tv_show %></td>
+        <td><%= link_to 'About', about_tv_show_path(tv_show) %></td>
+        <td><%= link_to 'Show', tv_show_path(tv_show) %></td>
         <td><%= link_to 'Edit', edit_tv_show_path(tv_show) %></td>
         <td><%= link_to 'Destroy', tv_show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -29,6 +30,7 @@
 </table>
 
 <br>
-<%= paginate @tv_shows %>
 
 <%= link_to 'New Tv Show', new_tv_show_path %>
+
+<%= link_to 'Search tv show', search_tv_shows_path %>
